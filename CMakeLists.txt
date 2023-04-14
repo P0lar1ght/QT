@@ -6,21 +6,27 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "E:/QT5.12.12/5.12.12/mingw73_64")
+set(CMAKE_PREFIX_PATH "E:/Qt/Qt5.12.12/5.12.12/mingw73_64")
 
 find_package(Qt5 COMPONENTS
+        Widgets
         Core
         Gui
-        Widgets
-        REQUIRED)
-
-add_executable(QT main.cpp ui_widget.h widget.h widget.cpp ui_StartAndEnd.h StartAndEnd.h StartAndEnd.cpp datafind.h showFileData.cpp getFilelen.cpp ipfind.h ipFuns.cpp)
+        )
+add_executable(
+        QT main.cpp UI/ui_widget.h UI/widget.h UI/widget.cpp
+        sqlite3/sqlite3.h sqlite3/sqlite3.c
+        SQLPackage/SQLiteConnection.h SQLPackage/SQLiteConnection.cpp
+        Query/CQueryIdCardFromFile.h Query/CQueryIdCardFromFile.cpp
+        Query/CQueryPhoneFromFile.h Query/CQueryPhoneFromFile.cpp
+        Query/CQueryIPFromFile.h Query/CQueryIPFromFile.cpp
+        UI/GetDialog.cpp UI/GetDialog.h
+        )
 target_link_libraries(QT
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
         )
-
 if (WIN32)
     set(DEBUG_SUFFIX)
     if (CMAKE_BUILD_TYPE MATCHES "Debug")

@@ -1,11 +1,10 @@
-#include "widget.h"
+#include "UI/widget.h"
 #include <QApplication>
 #include <QTranslator>
 #include "QDebug"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
